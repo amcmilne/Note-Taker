@@ -5,8 +5,8 @@ const path = require("path");
 const nanoid = require("nanoid");
 
 const dbFile = "./develop/db/db.json";
-const publicIndexFile = "/develop/public/index.html";
-const publicNotesFile = "/develop/public/notes.html";
+const publicIndexFile = "./develop/public/index.html";
+const publicNotesFile = "./develop/public/notes.html";
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -95,6 +95,7 @@ app.get("/notes", ((req, res) => {
 app.get("/", ((req, res) => {
     res.sendFile(path.join(__dirname, publicIndexFile));
 }));
+
 app.get("*", ((req, res) => {
     res.sendFile(path.join(__dirname, publicIndexFile));
 }));
