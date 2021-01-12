@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const nanoid = require("nanoid"); 
+const nanoid = require("nanoid");
 
 const dbFile = "./develop/db/db.json";
 const publicIndexFile = "/develop/public/index.html";
@@ -36,10 +36,10 @@ app.route("/api/notes")
     .post((req, res) => {
         let jsonFilePath = path.join(__dirname, dbFile);
         let noteContent = req.body;
-        let id = Date.now(); 
+        let id = Date.now();
 
         fs.readFile(jsonFilePath, function (err, data) {
-            let json = JSON.parse(data); 
+            let json = JSON.parse(data);
             json.push({
                 id: id,
                 title: noteContent.title,
@@ -58,7 +58,7 @@ app.route("/api/notes")
 //delete note
 
 app.route("/api/notes/:id")
-    .delete((req, res) => { 
+    .delete((req, res) => {
         let jsonFilePath = path.join(__dirname, dbFile);
         let notes;
 
@@ -66,25 +66,25 @@ app.route("/api/notes/:id")
             notes = JSON.parse(data);
             console.log(notes);
 
-        if (notes.length === 0) {}
+            if (notes.length === 0) { }
 
-        for (let i = 0; i < notes.length; i++) {
-            if (notes[i].id == req.params.id) {
-                notes.splice(i, 1);
-                break;
+            for (let i = 0; i < notes.length; i++) {
+                if (notes[i].id == req.params.id) {
+                    notes.splice(i, 1);
+                    break;
+                }
             }
-        } 
 
-        fs.writeFileSync(jsonFilePath, JSON.stringify(notes), function (err) {
+            fs.writeFileSync(jsonFilePath, JSON.stringify(notes), function (err) {
 
-            if (err) {
-                return console.log(err);
-            } else {
-                console.log("Note deleted");
-            }
+                if (err) {
+                    return console.log(err);
+                } else {
+                    console.log("Note deleted");
+                }
+            });
+            res.send(notes);
         });
-        res.send(notes);
-    });
     });
 
 
@@ -92,6 +92,9 @@ app.get("/notes", ((req, res) => {
     res.sendFile(path.join(__dirname, publicNotesFile));
 }));
 
+app.get("/", ((req, res) => {
+    res.sendFile(path.join(__dirname, publicIndexFile));
+}));
 app.get("*", ((req, res) => {
     res.sendFile(path.join(__dirname, publicIndexFile));
 }));
