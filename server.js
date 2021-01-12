@@ -4,9 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const nanoid = require("nanoid");
 
-const dbFile = "./develop/db/db.json";
-const publicIndexFile = "./develop/public/index.html";
-const publicNotesFile = "./develop/public/notes.html";
+const dbFile = "./Develop/db/db.json";
+const publicIndexFile = "./Develop/public/index.html";
+const publicNotesFile = "./Develop/public/notes.html";
 
 var app = express();
 var PORT = process.env.PORT || 3000;
