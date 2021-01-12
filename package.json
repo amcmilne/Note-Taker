@@ -1,0 +1,27 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "AS A user, I want to be able to write and save notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcmilne/Note-Taker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amcmilne/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/amcmilne/Note-Taker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "nanoid": "^3.1.20",
+    "path": "^0.12.7",
+    "shortid": "^2.2.16"
+  }
+}
